@@ -1,4 +1,7 @@
 const mongoose = require('mongoose')
+// mongoose-paginate é utilizado para auxiliar na listagem dos models
+const mongoosePaginate = require('mongoose-paginate')
+
 
 const ProductSchema = new mongoose.Schema({
     title:{
@@ -18,5 +21,8 @@ const ProductSchema = new mongoose.Schema({
         default: Date.now
     }
 })
+
+// Definido o pluglin para poder utilizar a função paginate
+ProductSchema.plugin(mongoosePaginate)
 
 mongoose.model('product', ProductSchema)
