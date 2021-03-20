@@ -1,8 +1,9 @@
-const { json } = require('express');
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors') // essa biblioteca serve para gerenciar quais outros dominios podem acessar minha API
 const requireDir = require('require-dir')
+
+const PORT = 8080
 
 //-- Iniciando o app
 const app = express();
@@ -17,6 +18,6 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useUnifiedTopology: true
 requireDir('./src/models')
 
 //--Rotas
-app.use('/api', require('./src/routes'))
+app.use('/', require('./src/routes'))
 
-app.listen(8080)
+app.listen(PORT, ()=>console.log('API its working || localhost:8080'))
