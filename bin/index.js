@@ -15,9 +15,9 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useUnifiedTopology: true
 
 //--Importando models
     //- O require dir é uma biblioteca para importa pasta em um arquivo
-requireDir('./src/models')
+requireDir('../src/models')
 
 //--Rotas
-app.use('/', require('./src/routes'))
+app.use('/', require('../src/routers/routes'))
 
 app.listen(PORT, ()=>console.log('API its working || localhost:8080'))

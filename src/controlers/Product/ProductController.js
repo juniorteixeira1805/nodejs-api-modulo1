@@ -1,28 +1,53 @@
-const ProductClass = require('./ProductClass')
+const Produtos = require('./ProductClass')
 
 module.exports = {
     async index(req, res){
-        const product = new ProductClass();
-        return await product.buscarTodosProduct(req.query)
+        try {
+            const product = new Produtos();
+            return res.status(200).send(await product.buscarTodosProduct(req.query));
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({erro: error});
+        }
     },
 
     async show(req, res){
-        const product = new ProductClass();
-        return await product.buscarUmProduct(req.body.parametroDeBusca, req.body.idetificador)
+        try {
+            const product = new Produtos();
+            return res.status(200).send(await product.buscarUmProduct(req.params.id));
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({erro: error});
+        }
     },
 
     async store(req, res){
-        const product = new ProductClass();
-        return await product.cadastrarProduct(req.body)
+        try {
+            const product = new Produtos();
+            return res.status(200).send(await product.cadastrarProduct(req.body));
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({erro: error});
+        }
     },
 
     async update(req, res){
-        const product = new ProductClass();
-        return await product.editarProduct(req.body.id, req.body)
+        try {
+            const product = new Produtos();
+            return res.status(200).send(await product.editarProduct(req.params.id, req.body));
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({erro: error});
+        }
     },
 
     async destroy(req, res){
-        const product = new ProductClass();
-        return await product.DeletarProduct(req.body)
+        try {
+            const product = new Produtos();
+            return res.status(200).send(await product.DeletarProduct(req.params.id));
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({erro: error});
+        }
     }
 }

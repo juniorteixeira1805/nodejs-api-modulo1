@@ -14,7 +14,8 @@ const ProductSchema = new mongoose.Schema({
     },
     url: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     CreatedAt :{
         type: Date,
